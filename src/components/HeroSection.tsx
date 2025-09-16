@@ -30,8 +30,8 @@ const HeroSection = () => {
             <Button variant="cta" size="lg" className="text-lg px-8 py-6">
               Solicitar Cotización Gratuita
             </Button>
-            <Button variant="professional" size="lg" className="text-lg px-8 py-6">
-              Ver Nuestros Servicios
+            <Button variant="professional" size="lg" className="text-lg px-8 py-6" asChild>
+              <a href="#servicios">Ver Nuestros Servicios</a>
             </Button>
           </div>
           
