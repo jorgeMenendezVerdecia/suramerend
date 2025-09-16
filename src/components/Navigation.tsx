@@ -34,9 +34,11 @@ const Navigation = () => {
                 {item.name}
               </a>
             ))}
-            <Button variant="cta" size="sm" className="ml-4">
-              <Phone className="w-4 h-4 mr-2" />
-              Solicitar Cotización
+            <Button variant="cta" size="sm" className="ml-4" asChild>
+              <a href="#contacto">
+                <Phone className="w-4 h-4 mr-2" />
+                Solicitar Cotización
+              </a>
             </Button>
           </div>
 
@@ -66,12 +68,14 @@ const Navigation = () => {
                   {item.name}
                 </a>
               ))}
-              <div className="px-3 py-2">
-                <Button variant="cta" size="sm" className="w-full">
-                  <Phone className="w-4 h-4 mr-2" />
-                  Solicitar Cotización
-                </Button>
-              </div>
+               <div className="px-3 py-2">
+                 <Button variant="cta" size="sm" className="w-full" asChild>
+                   <a href="#contacto" onClick={() => setIsMenuOpen(false)}>
+                     <Phone className="w-4 h-4 mr-2" />
+                     Solicitar Cotización
+                   </a>
+                 </Button>
+               </div>
             </div>
           </div>
         )}

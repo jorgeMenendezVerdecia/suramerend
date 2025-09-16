@@ -27,8 +27,8 @@ const HeroSection = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
-            <Button variant="cta" size="lg" className="text-lg px-8 py-6">
-              Solicitar Cotización Gratuita
+            <Button variant="cta" size="lg" className="text-lg px-8 py-6" asChild>
+              <a href="#contacto">Solicitar Cotización Gratuita</a>
             </Button>
             <Button variant="professional" size="lg" className="text-lg px-8 py-6" asChild>
               <a href="#servicios">Ver Nuestros Servicios</a>
