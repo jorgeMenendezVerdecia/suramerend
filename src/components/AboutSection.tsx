@@ -43,7 +43,7 @@ const AboutSection = () => {
             <h3 className="text-2xl font-bold text-foreground mb-6">Nuestra Historia</h3>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
-                Fundada en 2008 por un equipo de ingenieros especializados en END, 
+                Fundada en 2008 por el Ing. Rodrigo Fernández, especialista en END, 
                 SURAMER END S.A. nació con la visión de proporcionar servicios de
                 inspección de clase mundial a la industria petrolera latinoamericana.
               </p>
@@ -125,9 +125,9 @@ const AboutSection = () => {
                 <div className="w-20 h-20 rounded-full bg-primary/10 mx-auto mb-4 flex items-center justify-center">
                   <Users className="w-10 h-10 text-primary" />
                 </div>
-                <h4 className="font-semibold text-foreground">Dr. Carlos Mendoza</h4>
+                <h4 className="font-semibold text-foreground">Ing. Rodrigo Fernández</h4>
                 <p className="text-sm text-muted-foreground">CEO & Fundador</p>
-                <p className="text-xs text-muted-foreground mt-2">Ph.D. en Ing. Mecánica, ASNT Level III</p>
+                <p className="text-xs text-muted-foreground mt-2">Ing. Mecánico, ASNT Level III</p>
               </div>
               <div className="text-center">
                 <div className="w-20 h-20 rounded-full bg-primary/10 mx-auto mb-4 flex items-center justify-center">
