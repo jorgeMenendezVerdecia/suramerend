@@ -30,7 +30,7 @@ const AboutSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Acerca de Petro-NDT Solutions
+            Acerca de SURAMER END S.A.
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Somos líderes en ensayos no destructivos con más de 15 años de experiencia 
@@ -44,7 +44,7 @@ const AboutSection = () => {
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
                 Fundada en 2008 por un equipo de ingenieros especializados en END, 
-                Petro-NDT Solutions nació con la visión de proporcionar servicios de 
+                SURAMER END S.A. nació con la visión de proporcionar servicios de
                 inspección de clase mundial a la industria petrolera latinoamericana.
               </p>
               <p>

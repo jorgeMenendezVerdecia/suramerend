@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <h3 className="text-xl font-bold mb-4">Petro-NDT Solutions</h3>
+            <h3 className="text-xl font-bold mb-4">SURAMER END S.A.</h3>
             <p className="text-sm text-primary-foreground/80 leading-relaxed mb-4">
               Líderes en ensayos no destructivos para la industria petrolera con más de 
               15 años de experiencia y certificaciones internacionales.
@@ -76,7 +76,7 @@ const Footer = () => {
         <div className="border-t border-primary-foreground/20 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-primary-foreground/80">
-              © {currentYear} Petro-NDT Solutions. Todos los derechos reservados.
+              © {currentYear} SURAMER END S.A. Todos los derechos reservados.
             </p>
             <div className="flex gap-6 text-sm text-primary-foreground/80">
               <a href="#" className="hover:text-primary-foreground transition-colors duration-normal">

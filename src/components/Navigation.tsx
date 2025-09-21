@@ -20,7 +20,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <h1 className="text-xl font-bold text-primary">Petro-NDT Solutions</h1>
+            <h1 className="text-xl font-bold text-primary">SURAMER END S.A.</h1>
           </div>
 
           {/* Desktop Menu */}

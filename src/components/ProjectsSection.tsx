@@ -7,7 +7,7 @@ const ProjectsSection = () => {
     {
       company: "Petrolera Nacional S.A.",
       project: "Inspección Integral de Oleoducto Principal",
-      quote: "El equipo de Petro-NDT Solutions demostró un profesionalismo excepcional en la inspección de nuestro oleoducto de 500 km. Su precisión y eficiencia nos permitió identificar y corregir problemas críticos antes de que se convirtieran en fallas costosas.",
+      quote: "El equipo de SURAMER END S.A. demostró un profesionalismo excepcional en la inspección de nuestro oleoducto de 500 km. Su precisión y eficiencia nos permitió identificar y corregir problemas críticos antes de que se convirtieran en fallas costosas.",
       service: "Ultrasonido + Radiografía",
       industry: "Transporte de Petróleo",
       icon: Fuel,
