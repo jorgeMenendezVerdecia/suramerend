@@ -65,9 +65,8 @@ const AboutSection = () => {
               <CardContent className="p-6">
                 <h4 className="font-bold text-primary text-lg mb-2">Nuestra Misión</h4>
                 <p className="text-muted-foreground">
-                  Proteger la integridad de los activos petroleros de nuestros clientes 
-                  mediante servicios de END de excelencia, contribuyendo a operaciones 
-                  más seguras, eficientes y rentables.
+                  Garantizar la seguridad y confiabilidad en la industria petrolera, 
+                  previniendo fallas mediante ensayos no destructivos de precisión absoluta.
                 </p>
               </CardContent>
             </Card>
@@ -76,9 +75,8 @@ const AboutSection = () => {
               <CardContent className="p-6">
                 <h4 className="font-bold text-accent text-lg mb-2">Nuestra Visión</h4>
                 <p className="text-muted-foreground">
-                  Ser la empresa de END de referencia en América Latina, reconocida 
-                  por nuestra innovación tecnológica, excelencia operacional y 
-                  compromiso con la seguridad industrial.
+                  Ser el referente global en integridad de activos para la industria energética, 
+                  donde nuestra expertise defina el estándar de seguridad y sostenibilidad.
                 </p>
               </CardContent>
             </Card>
