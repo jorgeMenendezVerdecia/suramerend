@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
+import logo from "@/assets/logo.jpeg";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,7 +21,9 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <h1 className="text-xl font-bold text-primary">SURAMER END S.A.</h1>
+            <a href="#inicio" className="inline-block">
+              <img src={logo} alt="SURAMER END S.A." className="h-8 w-auto" />
+            </a>
           </div>
 
           {/* Desktop Menu */}
@@ -68,14 +71,14 @@ const Navigation = () => {
                   {item.name}
                 </a>
               ))}
-               <div className="px-3 py-2">
-                 <Button variant="cta" size="sm" className="w-full" asChild>
-                   <a href="#contacto" onClick={() => setIsMenuOpen(false)}>
-                     <Phone className="w-4 h-4 mr-2" />
-                     Solicitar Cotización
-                   </a>
-                 </Button>
-               </div>
+              <div className="px-3 py-2">
+                <Button variant="cta" size="sm" className="w-full" asChild>
+                  <a href="#contacto" onClick={() => setIsMenuOpen(false)}>
+                    <Phone className="w-4 h-4 mr-2" />
+                    Solicitar Cotización
+                  </a>
+                </Button>
+              </div>
             </div>
           </div>
         )}

@@ -1,0 +1,11 @@
+# wrangler.toml – Configuración del proyecto Cloudflare Pages
+# Documentación: https://developers.cloudflare.com/pages/functions/wrangler-configuration/
+
+name = "suramerend-www"
+pages_build_output_dir = "dist"
+compatibility_date = "2025-05-01"
+
+# ── Email via Resend ─────────────────────────────────────────────────────────
+# Secret requerido: RESEND_API_KEY
+# Agregar con:  npx wrangler pages secret put RESEND_API_KEY
+# O en Dashboard: Workers & Pages → suramerend-www → Settings → Environment Variables → Add secret

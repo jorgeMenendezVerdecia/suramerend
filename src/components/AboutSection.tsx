@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Target, Heart, Shield, Users } from "lucide-react";
+import { Target, Heart, Shield, Users, CheckCircle } from "lucide-react";
 
 const AboutSection = () => {
   const values = [
@@ -33,7 +33,7 @@ const AboutSection = () => {
             Acerca de SURAMER END S.A.
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Somos líderes en ensayos no destructivos con más de 15 años de experiencia 
+            Somos líderes en ensayos no destructivos con más de 15 años de experiencia
             protegiendo la integridad de activos críticos en la industria petrolera.
           </p>
         </div>
@@ -43,39 +43,39 @@ const AboutSection = () => {
             <h3 className="text-2xl font-bold text-foreground mb-6">Nuestra Historia</h3>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
-                Fundada en 2008 por el Ing. Rodrigo Fernández, especialista en END, 
+                Fundada en 2008 por el Ing. Rodrigo Fernández, especialista en END,
                 SURAMER END S.A. nació con la visión de proporcionar servicios de
                 inspección de clase mundial a la industria petrolera latinoamericana.
               </p>
               <p>
-                Desde nuestros inicios, hemos crecido de ser una pequeña empresa local 
-                a convertirnos en un referente regional, manteniendo siempre nuestro 
+                Desde nuestros inicios, hemos crecido de ser una pequeña empresa local
+                a convertirnos en un referente regional, manteniendo siempre nuestro
                 compromiso con la excelencia técnica y la satisfacción del cliente.
               </p>
               <p>
-                Hoy, con más de 500 proyectos completados exitosamente, continuamos 
-                innovando y expandiendo nuestros servicios para satisfacer las necesidades 
+                Hoy, con más de 500 proyectos completados exitosamente, continuamos
+                innovando y expandiendo nuestros servicios para satisfacer las necesidades
                 cambiantes de la industria.
               </p>
             </div>
           </div>
-          
+
           <div className="space-y-6">
             <Card className="bg-primary/5 border-primary/20">
               <CardContent className="p-6">
                 <h4 className="font-bold text-primary text-lg mb-2">Nuestra Misión</h4>
                 <p className="text-muted-foreground">
-                  Garantizar la seguridad y confiabilidad en la industria petrolera, 
+                  Garantizar la seguridad y confiabilidad en la industria petrolera,
                   previniendo fallas mediante ensayos no destructivos de precisión absoluta.
                 </p>
               </CardContent>
             </Card>
-            
+
             <Card className="bg-accent/5 border-accent/20">
               <CardContent className="p-6">
                 <h4 className="font-bold text-accent text-lg mb-2">Nuestra Visión</h4>
                 <p className="text-muted-foreground">
-                  Ser el referente global en integridad de activos para la industria energética, 
+                  Ser el referente global en integridad de activos para la industria energética,
                   donde nuestra expertise defina el estándar de seguridad y sostenibilidad.
                 </p>
               </CardContent>
@@ -114,8 +114,8 @@ const AboutSection = () => {
               Nuestro Equipo Directivo
             </h3>
             <p className="text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Dirigidos por profesionales con décadas de experiencia en la industria petrolera 
-              y END, nuestro equipo combina conocimiento técnico profundo con visión estratégica 
+              Dirigidos por profesionales con décadas de experiencia en la industria petrolera
+              y END, nuestro equipo combina conocimiento técnico profundo con visión estratégica
               para ofrecer soluciones integrales.
             </p>
             <div className="grid md:grid-cols-3 gap-6">
@@ -126,22 +126,77 @@ const AboutSection = () => {
                 <h4 className="font-semibold text-foreground">Ing. Rodrigo Fernández</h4>
                 <p className="text-sm text-muted-foreground">CEO & Fundador</p>
                 <p className="text-xs text-muted-foreground mt-2">Ing. Mecánico, ASNT Level III</p>
+                <ul className="mt-3 space-y-2  text-left rounded-md border border-border/60 bg-background/70 p-3">
+                  <p className="text-s text-muted-foreground mt-2  text-left">Inspección de END por:</p>
+                  <li className="flex items-start gap-2 rounded-sm px-2 py-1 text-sm transition-colors hover:bg-muted/50">
+                    <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-success" />
+                    <span className="leading-snug text-card-foreground">Líquidos penetrantes</span>
+                  </li>
+                  <li className="flex items-start gap-2 rounded-sm px-2 py-1 text-sm transition-colors hover:bg-muted/50">
+                    <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-success" />
+                    <span className="leading-snug text-card-foreground">Inspección visual</span>
+                  </li>
+                  <li className="flex items-start gap-2 rounded-sm px-2 py-1 text-sm transition-colors hover:bg-muted/50">
+                    <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-success" />
+                    <span className="leading-snug text-card-foreground">Partículas magnéticas</span>
+                  </li>
+                  <li className="flex items-start gap-2 rounded-sm px-2 py-1 text-sm transition-colors hover:bg-muted/50">
+                    <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-success" />
+                    <span className="leading-snug text-card-foreground">Ultrasonido medición de espesores</span>
+                  </li>
+                  <li className="flex items-start gap-2 rounded-sm px-2 py-1 text-sm transition-colors hover:bg-muted/50">
+                    <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-success" />
+                    <span className="leading-snug text-card-foreground">Electromagnetismo</span>
+                  </li>
+                  <li className="flex items-start gap-2 rounded-sm px-2 py-1 text-sm transition-colors hover:bg-muted/50">
+                    <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-success" />
+                    <span className="leading-snug text-card-foreground">Ultrasonido Haz Angular</span>
+                  </li>
+                </ul>
               </div>
               <div className="text-center">
                 <div className="w-20 h-20 rounded-full bg-primary/10 mx-auto mb-4 flex items-center justify-center">
                   <Users className="w-10 h-10 text-primary" />
                 </div>
-                <h4 className="font-semibold text-foreground">Ing. Ana Rodríguez</h4>
-                <p className="text-sm text-muted-foreground">Directora Técnica</p>
-                <p className="text-xs text-muted-foreground mt-2">M.Sc. END, API 510/570 Inspector</p>
+                <h4 className="font-semibold text-foreground">Juan Néstor Gonzalez Cedillo</h4>
+                <p className="text-sm text-muted-foreground">Inspector Técnico</p>
+                <ul className="mt-3 space-y-2 rounded-md border border-border/60 bg-background/70 p-3 text-left">
+                  <p className="text-s text-muted-foreground mt-2">Inspección de END por:</p>
+                  <li className="flex items-start gap-2 rounded-sm px-2 py-1 text-sm transition-colors hover:bg-muted/50">
+                    <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-success" />
+                    <span className="leading-snug text-card-foreground">Líquidos penetrantes</span>
+                  </li>
+                  <li className="flex items-start gap-2 rounded-sm px-2 py-1 text-sm transition-colors hover:bg-muted/50">
+                    <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-success" />
+                    <span className="leading-snug text-card-foreground">Inspección visual</span>
+                  </li>
+                  <li className="flex items-start gap-2 rounded-sm px-2 py-1 text-sm transition-colors hover:bg-muted/50">
+                    <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-success" />
+                    <span className="leading-snug text-card-foreground">Partículas magnéticas</span>
+                  </li>
+                  <li className="flex items-start gap-2 rounded-sm px-2 py-1 text-sm transition-colors hover:bg-muted/50">
+                    <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-success" />
+                    <span className="leading-snug text-card-foreground">Ultrasonido medición de espesores</span>
+                  </li>
+                </ul>
               </div>
               <div className="text-center">
                 <div className="w-20 h-20 rounded-full bg-primary/10 mx-auto mb-4 flex items-center justify-center">
                   <Users className="w-10 h-10 text-primary" />
                 </div>
-                <h4 className="font-semibold text-foreground">Ing. Miguel Torres</h4>
-                <p className="text-sm text-muted-foreground">Director de Operaciones</p>
-                <p className="text-xs text-muted-foreground mt-2">B.Sc. Petrolera, PMP Certified</p>
+                <h4 className="font-semibold text-foreground">Danilo Manuel Herdoiza Zurita</h4>
+                <p className="text-sm text-muted-foreground">Inspector Técnico</p>
+                <ul className="mt-3 space-y-2 rounded-md border border-border/60 bg-background/70 p-3 text-left">
+                  <p className="text-s text-muted-foreground mt-2">Inspección de END por:</p>
+                  <li className="flex items-start gap-2 rounded-sm px-2 py-1 text-sm transition-colors hover:bg-muted/50">
+                    <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-success" />
+                    <span className="leading-snug text-card-foreground">Líquidos penetrantes</span>
+                  </li>
+                  <li className="flex items-start gap-2 rounded-sm px-2 py-1 text-sm transition-colors hover:bg-muted/50">
+                    <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-success" />
+                    <span className="leading-snug text-card-foreground">Inspección visual</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

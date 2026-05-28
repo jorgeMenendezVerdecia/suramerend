@@ -8,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 
 const ContactSection = () => {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,6 +16,9 @@ const ContactSection = () => {
     phone: "",
     message: "",
   });
+
+  const workerEndpoint =
+    import.meta.env.VITE_EMAIL_SEND_ENDPOINT?.trim() || "/api/email-send";
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -24,39 +28,86 @@ const ContactSection = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
-    toast({
-      title: "Solicitud Enviada",
-      description: "Gracias por contactarnos. Nos comunicaremos con usted en menos de 24 horas.",
-    });
-    
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      company: "",
-      phone: "",
-      message: "",
-    });
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+
+    try {
+      const payload = {
+        subject: `COTIZACIONES | SOLICITUD de ${formData.company.trim()}`,
+        to: "cotizaciones@suramerend.com",
+        replyTo: formData.email.trim(),
+        data: {
+          company: formData.company.trim(),
+          fullName: formData.name.trim(),
+          phone: formData.phone.trim(),
+          email: formData.email.trim(),
+          message: formData.message.trim(),
+        },
+        text: [
+          `Empresa: ${formData.company.trim()}`,
+          `Contacto: ${formData.name.trim()}`,
+          `Teléfono: ${formData.phone.trim() || "No proporcionado"}`,
+          `Correo Electrónico: ${formData.email.trim()}`,
+          "",
+          "Mensaje:",
+          formData.message.trim(),
+        ].join("\n"),
+      };
+
+      const response = await fetch(workerEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error(`No se pudo enviar la solicitud (${response.status})`);
+      }
+
+      toast({
+        title: "Solicitud Enviada",
+        description: "Gracias por contactarnos. Nos comunicaremos con usted en menos de 24 horas.",
+      });
+
+      setFormData({
+        name: "",
+        email: "",
+        company: "",
+        phone: "",
+        message: "",
+      });
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Error desconocido";
+      toast({
+        title: "Error al enviar solicitud",
+        description: `No pudimos enviar su mensaje. ${message}`,
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
     {
       icon: MapPin,
       title: "Oficina Principal",
-      details: ["Av. Libertador 1234, Piso 8", "Caracas 1050, Venezuela"],
+      details: ["Hungurahua S/N, Robles y Laureles", "Francisco de Orellana, Ecuador"],
     },
     {
       icon: Phone,
       title: "Teléfonos",
-      details: ["+58 212 555-0123", "+58 414 555-0456"],
+      details: ["+593 994 723 972"],
     },
     {
       icon: Mail,
       title: "Correo Electrónico",
-      details: ["info@petrondt.com", "cotizaciones@petrondt.com"],
+      details: ["info@suramerend.com", "cotizaciones@suramerend.com"],
     },
     {
       icon: Clock,
@@ -73,8 +124,14 @@ const ContactSection = () => {
             Contáctanos
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            ¿Listo para proteger la integridad de sus activos? Solicite una cotización gratuita 
-            o consulte con nuestros expertos sobre sus necesidades de END.
+            ¿Listo para proteger la integridad de sus activos?
+          </p>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            Solicite una cotización gratuita
+            o consulte con nuestros expertos sobre sus necesidades de
+          </p>
+          <p className="text-lg text-muted-foreground font-bold max-w-3xl mx-auto">
+            Ensayos No Destructivos (END).
           </p>
         </div>
 
@@ -119,7 +176,7 @@ const ContactSection = () => {
                     />
                   </div>
                 </div>
-                
+
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-foreground mb-2">
@@ -145,7 +202,7 @@ const ContactSection = () => {
                       value={formData.phone}
                       onChange={handleInputChange}
                       className="bg-background border-border"
-                      placeholder="+58 414 555-0123"
+                      placeholder="+593 994 723 972"
                     />
                   </div>
                 </div>
@@ -165,9 +222,9 @@ const ContactSection = () => {
                   />
                 </div>
 
-                <Button type="submit" variant="cta" size="lg" className="w-full">
+                <Button type="submit" variant="cta" size="lg" className="w-full" disabled={isSubmitting}>
                   <Send className="w-4 h-4 mr-2" />
-                  Enviar Solicitud
+                  {isSubmitting ? "Enviando..." : "Enviar Solicitud"}
                 </Button>
 
                 <p className="text-xs text-muted-foreground text-center">
@@ -216,7 +273,7 @@ const ContactSection = () => {
                 </h4>
                 <div className="flex gap-4">
                   <a
-                    href="https://linkedin.com/company/petrondt-solutions"
+                    href="https://linkedin.com/company/suramerend"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-normal"
@@ -238,7 +295,7 @@ const ContactSection = () => {
                   Para situaciones críticas que requieren inspección inmediata.
                 </p>
                 <p className="font-semibold text-foreground text-lg">
-                  +58 424 URGENTE (424-874-3683)
+                  +593 994 723 972
                 </p>
               </CardContent>
             </Card>

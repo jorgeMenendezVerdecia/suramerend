@@ -11,7 +11,7 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-bold mb-4">SURAMER END S.A.</h3>
             <p className="text-sm text-primary-foreground/80 leading-relaxed mb-4">
-              Líderes en ensayos no destructivos para la industria petrolera con más de 
+              Líderes en ensayos no destructivos para la industria petrolera con más de
               15 años de experiencia y certificaciones internacionales.
             </p>
             <div className="flex gap-3">
@@ -57,17 +57,17 @@ const Footer = () => {
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p>Av. Libertador 1234, Piso 8</p>
-                  <p>Caracas 1050, Venezuela</p>
+                  <p>Hungurahua S/N, Robles y Laureles</p>
+                  <p>Francisco de Orellana, Ecuador</p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 flex-shrink-0" />
-                <p>+58 212 555-0123</p>
+                <p>+593 994 723 972</p>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 flex-shrink-0" />
-                <p>info@petrondt.com</p>
+                <p>info@suramerend.com</p>
               </div>
             </div>
           </div>
