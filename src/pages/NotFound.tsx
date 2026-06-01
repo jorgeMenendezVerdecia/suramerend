@@ -86,7 +86,7 @@ const NotFound = () => {
           className="mt-12 text-[0.8rem]"
           style={{ color: "rgba(240, 244, 255, 0.35)" }}
         >
-          &copy; 2026 SurAmerend. Todos los derechos reservados.
+          &copy; 2026 SURAMER END S.A. Todos los derechos reservados.
         </p>
       </div>
     </div>
