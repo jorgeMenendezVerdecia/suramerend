@@ -43,10 +43,10 @@ npm run build && npx wrangler pages deploy dist --commit-dirty=true
 
 ### Destinos de email
 
-| Formulario              | Destinatario                  |
-| ----------------------- | ----------------------------- |
-| Contacto / Cotizaciones | `cotizaciones@suramerend.com` |
-| Quejas / Apelaciones    | `quejas@suramerend.com`       |
+| Formulario              | Destinatario                 |
+| ----------------------- | ---------------------------- |
+| Contacto / Cotizaciones | `comercial@suramerend.com`   |
+| Quejas / Apelaciones    | `operaciones@suramerend.com` |
 
 ---
 

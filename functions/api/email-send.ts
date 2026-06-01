@@ -53,8 +53,8 @@ interface FormPayload {
 // ─────────────────────────────────────────────────────────────────────────────
 
 const ALLOWED_RECIPIENTS = new Set([
-    "cotizaciones@suramerend.com",
-    "quejas@suramerend.com",
+    "comercial@suramerend.com",
+    "operaciones@suramerend.com",
 ]);
 const ALLOWED_ORIGINS = new Set([
     "https://www.suramerend.com",

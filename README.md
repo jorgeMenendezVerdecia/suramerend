@@ -1,73 +1,131 @@
-# Welcome to your Lovable project
+# Suramerend WWW
 
-## Project info
+Sitio web corporativo de Suramerend construido con React, Vite y Cloudflare Pages.
 
-**URL**: https://lovable.dev/projects/6554ff4f-5ff2-48ad-a56c-9a7d4748187a
+## Resumen del proyecto
 
-## How can I edit this code?
+- App SPA con rutas gestionadas por `react-router-dom`.
+- Secciones principales: navegación, hero, servicios, tecnologías, acerca de, quejas/apelaciones, contacto y pie de página.
+- Formulario de contacto y envío de emails a través de Cloudflare Pages Function `/api/email-send`.
+- Soporte de modo mantenimiento mediante middleware Cloudflare y `public/maintenance.html`.
 
-There are several ways of editing your application.
+## Tecnología
 
-**Use Lovable**
+- Vite
+- React 18
+- TypeScript
+- Tailwind CSS
+- shadcn-ui / Radix UI
+- Cloudflare Pages Functions
+- Resend.com para envío de emails
+- React Query (`@tanstack/react-query`)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/6554ff4f-5ff2-48ad-a56c-9a7d4748187a) and start prompting.
+## Estructura clave
 
-Changes made via Lovable will be committed automatically to this repo.
+- `src/App.tsx` — router principal y provider de React Query
+- `src/pages/Index.tsx` — página única principal
+- `src/pages/NotFound.tsx` — ruta catch-all
+- `src/components/ContactSection.tsx` — formulario de cotizaciones
+- `src/components/ComplaintsSection.tsx` — formulario de quejas/apelaciones
+- `functions/api/email-send.ts` — endpoint de envío de emails
+- `functions/_middleware.ts` — middleware de mantenimiento
+- `wrangler.toml` — configuración de Cloudflare Pages
+- `public/maintenance.html` — página de mantenimiento
 
-**Use your preferred IDE**
+## Configuración local
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Requisitos
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Node.js
+- npm
 
-Follow these steps:
+### Instalación
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+```bash
+npm install
+```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Desarrollo
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Abre `http://localhost:5173`.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+> Nota: las Pages Functions no se ejecutan automáticamente en el servidor Vite. Para probar `functions/api/email-send.ts` en local necesitas usar Wrangler y hacer build primero.
 
-**Use GitHub Codespaces**
+```bash
+npm run build
+npx wrangler pages dev dist --port 8788
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Scripts disponibles
 
-## What technologies are used for this project?
+- `npm run dev` — arranca el modo desarrollo con HMR
+- `npm run build` — construye la app en `dist/`
+- `npm run build:dev` — build de Vite en modo development
+- `npm run preview` — preview local de la carpeta `dist/`
+- `npm run lint` — ejecuta ESLint en el repositorio
 
-This project is built with:
+## Despliegue
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Build de producción
 
-## How can I deploy this project?
+```bash
+npm run build
+```
 
-Simply open [Lovable](https://lovable.dev/projects/6554ff4f-5ff2-48ad-a56c-9a7d4748187a) and click on Share -> Publish.
+### Despliegue a Cloudflare Pages
 
-## Can I connect a custom domain to my Lovable project?
+```bash
+npm run build && npx wrangler pages deploy dist --commit-dirty=true
+```
 
-Yes, you can!
+### Variables de entorno / secrets
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- `RESEND_API_KEY` — API key de Resend.com necesaria para `/api/email-send`
+- `MAINTENANCE_MODE` — activar modo mantenimiento en Cloudflare Pages cuando su valor sea `true`
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+#### Configurar secret en Wrangler
+
+```bash
+npx wrangler pages secret put RESEND_API_KEY --project-name suramerend-www
+```
+
+#### Activar modo mantenimiento
+
+```bash
+npx wrangler pages secret put MAINTENANCE_MODE --project-name suramerend-www
+# y escribe true
+```
+
+## Detalles del endpoint de email
+
+- Ruta: `POST /api/email-send`
+- Funciona con `application/json` y `multipart/form-data`
+- Permite adjuntos opcionales
+- Destinatarios permitidos:
+  - `comercial@suramerend.com`
+  - `operaciones@suramerend.com`
+- Orígenes permitidos para CORS:
+  - `https://www.suramerend.com`
+  - `https://suramerend.com`
+
+## Notas de despliegue
+
+- El middleware `functions/_middleware.ts` redirige a `public/maintenance.html` cuando `MAINTENANCE_MODE=true`.
+- `wrangler.toml` usa `pages_build_output_dir = "dist"` y `compatibility_date = "2025-05-01"`.
+
+## Buenas prácticas
+
+- Mantener los secretos fuera del repositorio.
+- Verificar `RESEND_API_KEY` antes de desplegar envíos de correo.
+- Controlar la regla de rate limiting para `POST /api/email-send` en Cloudflare.
+
+## Contacto para desarrolladores
+
+- Código base principal en `src/`
+- Funciones de backend en `functions/`
+- Activos estáticos en `public/`
+- Configuración de build y deploy en `vite.config.ts` y `wrangler.toml`
