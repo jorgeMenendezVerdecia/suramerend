@@ -5,6 +5,12 @@ name = "suramerend-www"
 pages_build_output_dir = "dist"
 compatibility_date = "2025-05-01"
 
+# ── Modo Mantenimiento ───────────────────────────────────────────────────────
+# Cambiar a "true" para activar la página de mantenimiento y redesplegar.
+# Cambiar a "false" (o eliminar la línea) para volver al sitio normal.
+[vars]
+MAINTENANCE_MODE = "true"
+
 # ── Email via Resend ─────────────────────────────────────────────────────────
 # Secret requerido: RESEND_API_KEY
 # Agregar con:  npx wrangler pages secret put RESEND_API_KEY

@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, Linkedin } from "lucide-react";
+import { MapPin, Phone, Mail } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -14,27 +14,19 @@ const Footer = () => {
               Líderes en ensayos no destructivos para la industria petrolera con más de
               15 años de experiencia y certificaciones internacionales.
             </p>
-            <div className="flex gap-3">
-              <a
-                href="https://linkedin.com/company/petrondt-solutions"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors duration-normal"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-            </div>
+
           </div>
 
           {/* Services */}
           <div>
             <h4 className="font-semibold mb-4">Servicios END</h4>
             <ul className="space-y-2 text-sm text-primary-foreground/80">
-              <li>Inspección por Ultrasonido</li>
-              <li>Líquidos Penetrantes</li>
-              <li>Partículas Magnéticas</li>
-              <li>Radiografía Industrial</li>
-              <li>Termografía</li>
+              <li>Ultrasonido pulso eco</li>
+              <li>Ultrasonido pos haz angular</li>
+              <li>Inspección electromagnética por fuga de campo</li>
+              <li>Tintas penetrantes</li>
+              <li>Partículas magnéticas</li>
+              <li>Inspección visual y dimensional</li>
             </ul>
           </div>
 
@@ -45,7 +37,9 @@ const Footer = () => {
               <li>Exploración y Producción</li>
               <li>Refinación</li>
               <li>Petroquímica</li>
-              <li>Transporte (Oleoductos)</li>
+              <li>Minería</li>
+              <li>Aviación</li>
+              <li>Industria en general</li>
               <li>Offshore</li>
             </ul>
           </div>
@@ -67,7 +61,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 flex-shrink-0" />
-                <p>info@suramerend.com</p>
+                <p>operaciones@suramerend.com</p>
               </div>
             </div>
           </div>

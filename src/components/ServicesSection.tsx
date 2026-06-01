@@ -1,45 +1,56 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Zap, Droplets, Magnet, Activity, Thermometer } from "lucide-react";
+import { Zap, Magnet, Activity, Droplets, Ruler, TrendingDown, } from "lucide-react";
 import ultrasonicImage from "@/assets/ultrasonic-equipment.jpg";
 import magneticImage from "@/assets/magnetic-particle.jpg";
 import radiographyImage from "@/assets/radiography.jpg";
+import angularUltrasoundImage from "@/assets/angularUltrasound.webp";
+import penetratingLiquidsImage from "@/assets/penetratingLiquids.webp";
+import emiMFLImage from "@/assets/EMI-MFL.webp";
+import visualInspectionImage from "@/assets/visualInspection.webp";
 
 const ServicesSection = () => {
   const services = [
     {
-      title: "Inspección por Ultrasonido",
-      description: "Detección precisa de defectos internos en soldaduras, espesores de pared y corrosión. Ideal para tuberías, tanques y estructuras críticas.",
-      benefits: "Detección temprana de fallas, medición precisa de espesores, inspección sin interrupciones operativas.",
+      title: "Inspección por pulso-eco",
+      description: "(UT, por sus siglas en inglés) es una técnica de inspección que emite ondas de sonido de alta frecuencia hacia un material y analiza los ecos reflejados.",
+      benefits: "Es clave para identificar defectos internos y medir espesores sin causar ningún daño.",
       icon: Zap,
       image: ultrasonicImage,
     },
     {
-      title: "Líquidos Penetrantes",
-      description: "Inspección de discontinuidades superficiales en materiales no porosos. Excelente para detectar grietas, porosidad y defectos de soldadura.",
-      benefits: "Detección de defectos superficiales invisibles, aplicable en campo, resultados inmediatos.",
-      icon: Droplets,
-      image: null,
+      title: "Ultrasonido utilizando la técnica de haz angular",
+      description: "Consiste en transmitir ondas sonoras que entran al material con un ángulo distinto a 90°.",
+      benefits: "Esta técnica es fundamental cuando el acceso directo está bloqueado (Interior del material tubular), permitiendo localizar discontinuidades y evaluar la pérdida de material de manera no destructiva.",
+      icon: TrendingDown,
+      image: angularUltrasoundImage,
     },
     {
-      title: "Partículas Magnéticas",
-      description: "Localización de discontinuidades superficiales y subsuperficiales en materiales ferromagnéticos mediante campos magnéticos.",
-      benefits: "Alta sensibilidad para defectos críticos, inspección rápida de grandes áreas, certificación de soldaduras.",
+      title: "Líquidos (Tintes) penetrantes",
+      description: "Es un ensayo no destructivo (END) utilizado para detectar grietas, poros y fisuras superficiales en materiales sólidos no porosos. Funciona por capilaridad, penetrando en las discontinuidades del material para luego resaltarlas visualmente mediante un líquido revelador.",
+      benefits: "Se aplican a todos los metales.",
+      icon: Droplets,
+      image: penetratingLiquidsImage,
+    },
+    {
+      title: "Inspección Electromagnética por Fuga de Campo (EMI-MFL)",
+      description: "Se utilizan en la industria petrolera en tuberías de perforación, producción y revestimiento para obtener una exploración de las paredes del tubo, determinando perforaciones, corrosión y pérdidas de espesor de la pared.",
+      benefits: "Una de las técnicas de ensayo no destructivo más eficaces para materiales ferromagnéticos.",
+      icon: Activity,
+      image: emiMFLImage,
+    },
+    {
+      title: "Inspección aplicando partículas magnéticas",
+      description: "Es un ensayo no destructivo (END) utilizado para detectar discontinuidades superficiales en materiales ferromagnéticos mediante la aplicación de un campo magnético y partículas magnéticas.",
+      benefits: "Alta sensibilidad para defectos superficiales, aplicable en campo, resultados inmediatos.",
       icon: Magnet,
       image: magneticImage,
     },
     {
-      title: "Radiografía Industrial",
-      description: "Inspección volumétrica completa mediante rayos X y gamma. Proporciona registro permanente de la condición interna de componentes.",
-      benefits: "Documentación permanente, detección de defectos internos, cumplimiento de códigos internacionales.",
-      icon: Activity,
-      image: radiographyImage,
-    },
-    {
-      title: "Termografía",
-      description: "Detección de problemas eléctricos, mecánicos y estructurales mediante imágenes térmicas de alta resolución.",
-      benefits: "Inspección predictiva, detección temprana de fallas, inspección a distancia segura.",
-      icon: Thermometer,
-      image: null,
+      title: "Inspección visual y análisis dimensional",
+      description: "Es un ensayo no destructivo (END) utilizado para evaluar visualmente y medir dimensiones de componentes, asegurando que cumplan con las especificaciones requeridas.",
+      benefits: "Permite detectar defectos superficiales y verificar dimensiones críticas sin dañar el componente, conforme a las normas aplicables como: API, ASTM, DS-1, ASME, SAE.",
+      icon: Ruler,
+      image: visualInspectionImage,
     },
   ];
 
@@ -51,7 +62,7 @@ const ServicesSection = () => {
             Nuestros Servicios de END
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Ofrecemos la gama completa de ensayos no destructivos con tecnología de punta 
+            Ofrecemos la gama completa de ensayos no destructivos con tecnología de punta
             y personal certificado internacionalmente para garantizar la integridad de sus activos.
           </p>
         </div>

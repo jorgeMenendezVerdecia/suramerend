@@ -64,7 +64,7 @@ const ComplaintsSection = () => {
             // Build payload matching ContactSection shape to satisfy backend validation
             const payload = {
                 subject: `QUEJA/APELACIÓN | ${formData.presenter.trim() || "Remitente Anónimo"}`,
-                to: "quejas@suramerend.com",
+                to: "operaciones@suramerend.com",
                 replyTo: formData.email.trim(),
                 data: {
                     company: formData.represents.trim(),
@@ -281,7 +281,7 @@ const ComplaintsSection = () => {
                                 <div className="mt-4 flex items-center gap-3">
                                     <Mail className="w-5 h-5 text-primary" />
                                     <div>
-                                        <p className="text-sm font-semibold">info@suramerend.com</p>
+                                        <p className="text-sm font-semibold">operaciones@suramerend.com</p>
                                         <p className="text-xs text-muted-foreground">También se envía copia al equipo responsable.</p>
                                     </div>
                                 </div>
@@ -289,7 +289,7 @@ const ComplaintsSection = () => {
                                     <Calendar className="w-5 h-5 text-primary" />
                                     <div>
                                         <p className="text-sm font-semibold">Horario de atención</p>
-                                        <p className="text-xs text-muted-foreground">Lun - Vie: 7:00 - 18:00</p>
+                                        <p className="text-xs text-muted-foreground">24/7</p>
                                     </div>
                                 </div>
                             </CardContent>

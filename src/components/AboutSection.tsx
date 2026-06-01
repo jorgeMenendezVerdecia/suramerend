@@ -37,8 +37,8 @@ const AboutSection = () => {
             protegiendo la integridad de activos críticos en la industria petrolera.
           </p>
         </div>
-
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+          {/*
           <div>
             <h3 className="text-2xl font-bold text-foreground mb-6">Nuestra Historia</h3>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
@@ -59,6 +59,7 @@ const AboutSection = () => {
               </p>
             </div>
           </div>
+          */}
 
           <div className="space-y-6">
             <Card className="bg-primary/5 border-primary/20">
@@ -82,7 +83,6 @@ const AboutSection = () => {
             </Card>
           </div>
         </div>
-
         {/* Values */}
         <div>
           <h3 className="text-2xl font-bold text-center text-foreground mb-12">
@@ -108,6 +108,7 @@ const AboutSection = () => {
         </div>
 
         {/* Team Section */}
+        {/*
         <div className="mt-16 text-center">
           <div className="bg-muted/30 rounded-lg p-8">
             <h3 className="text-2xl font-bold text-foreground mb-6">
@@ -201,6 +202,7 @@ const AboutSection = () => {
             </div>
           </div>
         </div>
+        */}
       </div>
     </section>
   );

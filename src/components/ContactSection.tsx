@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { MapPin, Phone, Mail, Clock, Linkedin, Send } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const ContactSection = () => {
@@ -37,7 +37,7 @@ const ContactSection = () => {
     try {
       const payload = {
         subject: `COTIZACIONES | SOLICITUD de ${formData.company.trim()}`,
-        to: "cotizaciones@suramerend.com",
+        to: "comercial@suramerend.com",
         replyTo: formData.email.trim(),
         data: {
           company: formData.company.trim(),
@@ -107,12 +107,12 @@ const ContactSection = () => {
     {
       icon: Mail,
       title: "Correo Electrónico",
-      details: ["info@suramerend.com", "cotizaciones@suramerend.com"],
+      details: ["operaciones@suramerend.com", "comercial@suramerend.com"],
     },
     {
       icon: Clock,
       title: "Horario de Atención",
-      details: ["Lunes - Viernes: 7:00 AM - 6:00 PM", "Emergencias 24/7"],
+      details: ["24/7"],
     },
   ];
 
@@ -264,41 +264,6 @@ const ContactSection = () => {
                 ))}
               </div>
             </div>
-
-            {/* Social Media */}
-            <Card className="bg-card border-border">
-              <CardContent className="p-6">
-                <h4 className="font-semibold text-card-foreground mb-4">
-                  Síguenos en Redes Sociales
-                </h4>
-                <div className="flex gap-4">
-                  <a
-                    href="https://linkedin.com/company/suramerend"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-normal"
-                  >
-                    <Linkedin className="w-5 h-5" />
-                    LinkedIn
-                  </a>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Emergency Contact */}
-            <Card className="bg-accent/5 border-accent/20">
-              <CardContent className="p-6">
-                <h4 className="font-semibold text-accent text-lg mb-2">
-                  Servicio de Emergencia 24/7
-                </h4>
-                <p className="text-sm text-muted-foreground mb-3">
-                  Para situaciones críticas que requieren inspección inmediata.
-                </p>
-                <p className="font-semibold text-foreground text-lg">
-                  +593 994 723 972
-                </p>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </div>
