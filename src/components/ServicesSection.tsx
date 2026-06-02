@@ -1,11 +1,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Zap, Magnet, Activity, Droplets, Ruler, TrendingDown, } from "lucide-react";
-import ultrasonicImage from "@/assets/ultrasonic-equipment.jpg";
-import magneticImage from "@/assets/magnetic-particle.jpg";
-import radiographyImage from "@/assets/radiography.jpg";
+
+
+import pulseEchoUltrasoundImage from "@/assets/pulseEchoUltrasound.webp";
 import angularUltrasoundImage from "@/assets/angularUltrasound.webp";
 import penetratingLiquidsImage from "@/assets/penetratingLiquids.webp";
 import emiMFLImage from "@/assets/EMI-MFL.webp";
+import magneticImage from "@/assets/magnetic-particle.jpg";
 import visualInspectionImage from "@/assets/visualInspection.webp";
 
 const ServicesSection = () => {
@@ -15,7 +16,7 @@ const ServicesSection = () => {
       description: "(UT, por sus siglas en inglés) es una técnica de inspección que emite ondas de sonido de alta frecuencia hacia un material y analiza los ecos reflejados.",
       benefits: "Es clave para identificar defectos internos y medir espesores sin causar ningún daño.",
       icon: Zap,
-      image: ultrasonicImage,
+      image: pulseEchoUltrasoundImage,
     },
     {
       title: "Ultrasonido utilizando la técnica de haz angular",
