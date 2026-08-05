@@ -67,7 +67,6 @@ const Navigation = () => {
     { name: "Inicio", href: "#inicio" },
     { name: "Servicios", href: "#servicios" },
     { name: "Tecnologías", href: "#tecnologias" },
-    { name: "Proyectos", href: "#proyectos" },
     { name: "Nosotros", href: "#nosotros" },
     { name: "Contacto", href: "#contacto" },
     { name: "Quejas / Apelaciones", href: "#reclamos" },
@@ -137,13 +136,13 @@ const Navigation = () => {
                   {item.name}
                 </a>
               ))}
-                <a
-                  href="#reclamos"
-                  className="block px-3 py-2 text-foreground hover:text-primary transition-colors duration-normal"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Quejas / Apelaciones
-                </a>
+              <a
+                href="#reclamos"
+                className="block px-3 py-2 text-foreground hover:text-primary transition-colors duration-normal"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Quejas / Apelaciones
+              </a>
               <div className="px-3 py-2">
                 <Button variant="cta" size="sm" className="w-full" asChild>
                   <a href="#contacto" onClick={() => setIsMenuOpen(false)}>
