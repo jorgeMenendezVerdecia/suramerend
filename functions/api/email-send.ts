@@ -96,7 +96,7 @@ function escapeHtml(s: string): string {
         .replace(/"/g, "&quot;");
 }
 
-function buildHtmlBody(data: FormPayload["data"], subject: string): string {
+function buildHtmlBody(data: FormPayload["data"], subject: string, ticket?: string): string {
     const row = (label: string, value: string) =>
         `<tr>
       <td style="padding:8px 12px 8px 0;color:#666;font-size:13px;font-weight:bold;white-space:nowrap;vertical-align:top;">${label}</td>
@@ -111,15 +111,16 @@ function buildHtmlBody(data: FormPayload["data"], subject: string): string {
   <title>${escapeHtml(subject)}</title>
 </head>
 <body style="margin:0;padding:0;background:#f0f2f5;font-family:Arial,Helvetica,sans-serif;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f0f2f5;padding:32px 16px;">
+    <table width="100%" cellpadding="0" cellspacing="0" style="background:#f0f2f5;padding:32px 16px;">
     <tr><td align="center">
       <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.10);max-width:600px;">
 
-        <!-- Cabecera -->
+                <!-- Cabecera -->
         <tr>
           <td style="background:#003366;padding:28px 32px;">
             <h1 style="margin:0;color:#ffffff;font-size:22px;font-weight:bold;letter-spacing:0.5px;">Suramerend</h1>
-            <p style="margin:6px 0 0;color:#90b8e8;font-size:13px;">${escapeHtml(subject)}</p>
+                        <p style="margin:6px 0 0;color:#90b8e8;font-size:13px;">${escapeHtml(subject)}</p>
+                        ${ticket ? `<p style="margin:6px 0 0;color:#fff;font-size:13px;">Número de ticket: <strong>${escapeHtml(ticket)}</strong></p>` : ""}
           </td>
         </tr>
 
@@ -147,9 +148,10 @@ function buildHtmlBody(data: FormPayload["data"], subject: string): string {
         <!-- Pie -->
         <tr>
           <td style="background:#f5f7fa;padding:16px 32px;border-top:1px solid #eee;">
-            <p style="margin:0;font-size:11px;color:#aaa;text-align:center;">
-              Mensaje enviado automáticamente desde <a href="https://suramerend.com" style="color:#003366;text-decoration:none;">suramerend.com</a>
-            </p>
+                        <p style="margin:0;font-size:11px;color:#aaa;text-align:center;">
+                            Mensaje enviado automáticamente desde <a href="https://suramerend.com" style="color:#003366;text-decoration:none;">suramerend.com</a>
+                        </p>
+                        ${ticket ? `<p style="margin:8px 0 0;font-size:12px;color:#666;text-align:center;">Conserve este número de ticket para seguimiento: <strong>${escapeHtml(ticket)}</strong></p>` : ""}
           </td>
         </tr>
 
@@ -268,13 +270,30 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     );
 
     // 6. Llamar a la API de Resend
-    const htmlBody = buildHtmlBody(data, subject);
+    // Generar número de ticket para trazabilidad (formato: Q-YYYYMMDD-HHMMSS-XXXX)
+    const generateTicket = () => {
+        const pad = (n: number) => n.toString().padStart(2, "0");
+        const d = new Date();
+        const y = d.getFullYear();
+        const m = pad(d.getMonth() + 1);
+        const day = pad(d.getDate());
+        const hh = pad(d.getHours());
+        const mm = pad(d.getMinutes());
+        const ss = pad(d.getSeconds());
+        const rand = Math.random().toString(36).substring(2, 6).toUpperCase();
+        return `Q-${y}${m}${day}-${hh}${mm}${ss}-${rand}`;
+    };
+
+    const ticket = generateTicket();
+    // Incluir ticket en el HTML y en el texto plano
+    const htmlBody = buildHtmlBody(data, subject, ticket);
+    const textWithTicket = `${text}\n\nNúmero de ticket: ${ticket}`;
     const resendPayload: Record<string, unknown> = {
         from: `${FROM_NAME} <${FROM_ADDRESS}>`,
         to: [to],
-        subject,
+        subject: `${subject} [Ticket: ${ticket}]`,
         html: htmlBody,
-        text,
+        text: textWithTicket,
         ...(replyTo && { reply_to: replyTo }),
         ...(attachments.length > 0 && { attachments }),
     };
@@ -295,7 +314,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
             return json({ error: "No se pudo enviar el email." }, 500);
         }
 
-        return json({ ok: true });
+        return json({ ok: true, ticket });
     } catch (err) {
         const msg = err instanceof Error ? err.message : "Error desconocido";
         console.error("[email-send] Error de red:", msg);

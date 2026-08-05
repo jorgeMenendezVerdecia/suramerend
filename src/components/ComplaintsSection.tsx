@@ -17,6 +17,7 @@ import { useToast } from "@/hooks/use-toast";
 
 const ComplaintsSection = () => {
     const { toast } = useToast();
+    const [lastTicket, setLastTicket] = useState<string | null>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isDiagramOpen, setIsDiagramOpen] = useState(false);
     const [formData, setFormData] = useState({
@@ -110,11 +111,17 @@ const ComplaintsSection = () => {
                 body: fd,
             });
 
-            if (!response.ok) throw new Error(`(${response.status})`);
+            const resJson = await response.json();
+            if (!response.ok) throw new Error(resJson?.error || `(${response.status})`);
+
+            const ticket = resJson?.ticket as string | undefined;
+            setLastTicket(ticket ?? null);
 
             toast({
                 title: "Formulario Enviado",
-                description: "Gracias. Su comunicación ha sido recibida y será atendida.",
+                description: ticket
+                    ? `Gracias. Su comunicación ha sido recibida. Número de ticket: ${ticket}`
+                    : "Gracias. Su comunicación ha sido recibida y será atendida.",
             });
 
             setFormData({
@@ -130,6 +137,7 @@ const ComplaintsSection = () => {
                 attachments: [],
                 details: "",
             });
+            // Optionally keep the ticket visible to the user after reset
         } catch (error) {
             const message = error instanceof Error ? error.message : "Error desconocido";
             toast({
@@ -270,6 +278,19 @@ const ComplaintsSection = () => {
 
                                 <p className="text-xs text-muted-foreground text-center">* Campos obligatorios. SURAMER END S.A. dará atención y seguimiento a su planteamiento. Recibirá una notificación vía oficio o e-mail.</p>
                             </form>
+                            {lastTicket && (
+                                <div className="mt-4 p-4 bg-background border border-border rounded">
+                                    <p className="text-sm font-medium">Número de seguimiento:</p>
+                                    <div className="flex items-center gap-2 mt-2">
+                                        <input readOnly value={lastTicket} className="bg-muted px-3 py-2 rounded flex-1 text-sm" />
+                                        <Button size="sm" onClick={() => {
+                                            navigator.clipboard?.writeText(lastTicket);
+                                            toast({ title: "Copiado", description: "Número de ticket copiado al portapapeles." });
+                                        }}>Copiar</Button>
+                                    </div>
+                                    <p className="text-xs text-muted-foreground mt-2">Conserve este número para seguimiento del proceso según el módulo ISO 17020.</p>
+                                </div>
+                            )}
                         </CardContent>
                     </Card>
 
