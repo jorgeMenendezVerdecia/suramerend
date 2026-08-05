@@ -63,6 +63,7 @@ const ALLOWED_ORIGINS = new Set([
 const FROM_ADDRESS = "noreply@suramerend.com";
 const FROM_NAME = "Suramerend Web";
 const RESEND_ENDPOINT = "https://api.resend.com/emails";
+const RECAPTCHA_VERIFY = "https://www.google.com/recaptcha/api/siteverify";
 const MAX_FILE_SIZE = 10 * 1024 * 1024;   // 10 MB por archivo
 const MAX_TOTAL_SIZE = 20 * 1024 * 1024;  // 20 MB total adjuntos
 const MAX_ATTACHMENTS = 5;
@@ -248,6 +249,47 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     // 2. Validar campos mínimos
     if (!subject || !to || !text || !data?.email) {
         return json({ error: "Faltan campos requeridos: subject, to, text, data.email." }, 422);
+    }
+
+    // 2.5 reCAPTCHA v3 verification if token provided
+    // Extract token from either form data or JSON payload
+    let recaptchaToken: string | undefined;
+    try {
+        if (contentType.includes("multipart/form-data")) {
+            // already parsed 'form'
+            // @ts-ignore
+            recaptchaToken = (form && form.get("recaptchaToken")) as string | undefined;
+        } else {
+            // payload variable holds parsed JSON
+            // @ts-ignore
+            recaptchaToken = (payload as any)?.recaptchaToken;
+        }
+    } catch (e) {
+        recaptchaToken = undefined;
+    }
+
+    if (recaptchaToken) {
+        if (!env.RECAPTCHA_SECRET) {
+            console.warn('[email-send] RECAPTCHA_SECRET not configured; skipping verification.');
+        } else {
+            try {
+                const formbody = `secret=${encodeURIComponent(env.RECAPTCHA_SECRET)}&response=${encodeURIComponent(recaptchaToken)}`;
+                const verifyRes = await fetch(RECAPTCHA_VERIFY, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: formbody,
+                });
+                const verifyJson = await verifyRes.json();
+                // require success and score >= 0.5 for v3
+                if (!verifyJson.success || (typeof verifyJson.score === 'number' && verifyJson.score < 0.5)) {
+                    console.warn('[email-send] reCAPTCHA verification failed', verifyJson);
+                    return json({ error: 'reCAPTCHA verification failed.' }, 403);
+                }
+            } catch (err) {
+                console.error('[email-send] Error verifying reCAPTCHA', err);
+                return json({ error: 'Error verificando reCAPTCHA' }, 500);
+            }
+        }
     }
 
     // 3. Verificar destinatario autorizado

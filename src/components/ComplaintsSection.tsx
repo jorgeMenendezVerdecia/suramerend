@@ -106,6 +106,18 @@ const ComplaintsSection = () => {
                 fd.append("attachments", file, file.name);
             }
 
+            // reCAPTCHA v3 token
+            const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
+            if (siteKey) {
+                try {
+                    const { executeRecaptcha } = await import('@/lib/recaptcha');
+                    const token = await executeRecaptcha(siteKey, 'complaint');
+                    if (token) fd.append('recaptchaToken', token);
+                } catch (err) {
+                    console.warn('reCAPTCHA load failed', err);
+                }
+            }
+
             const response = await fetch(workerEndpoint, {
                 method: "POST",
                 body: fd,
