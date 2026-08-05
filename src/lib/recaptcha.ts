@@ -26,10 +26,10 @@ export async function loadRecaptcha(siteKey: string) {
 export async function executeRecaptcha(siteKey: string, action = 'submit') {
     if (!siteKey) return null;
     try {
-        // @ts-ignore
-        const grecaptcha = await loadRecaptcha(siteKey);
+        const grecaptcha = await loadRecaptcha(siteKey) as any;
         if (!grecaptcha) return null;
-        // @ts-ignore
+        // grecaptcha.ready() must resolve before execute() is safe to call
+        await new Promise<void>(resolve => grecaptcha.ready(resolve));
         const token = await grecaptcha.execute(siteKey, { action });
         return token as string;
     } catch (err) {
