@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Shield, Award, Users } from "lucide-react";
-import heroImage from "@/assets/hero-ndt-testing.jpg";
+import heroImage from "@/assets/hero-ndt-testing.webp";
 
 const HeroSection = () => {
   return (
