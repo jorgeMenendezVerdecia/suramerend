@@ -1,4 +1,5 @@
 import Navigation from "@/components/Navigation";
+import FloatingWhatsAppButton from "@/components/FloatingWhatsAppButton";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
 import TechnologiesSection from "@/components/TechnologiesSection";
@@ -12,6 +13,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
+      <FloatingWhatsAppButton />
       <HeroSection />
       <ServicesSection />
       <TechnologiesSection />
