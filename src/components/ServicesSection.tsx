@@ -6,7 +6,7 @@ import pulseEchoUltrasoundImage from "@/assets/pulseEchoUltrasound.webp";
 import angularUltrasoundImage from "@/assets/angularUltrasound.webp";
 import penetratingLiquidsImage from "@/assets/penetratingLiquids.webp";
 import emiMFLImage from "@/assets/EMI-MFL.webp";
-import magneticImage from "@/assets/magnetic-particle.jpg";
+import magneticImage from "@/assets/magnetic-particle.webp";
 import visualInspectionImage from "@/assets/visualInspection.webp";
 
 const ServicesSection = () => {

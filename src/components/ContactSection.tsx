@@ -57,12 +57,26 @@ const ContactSection = () => {
         ].join("\n"),
       };
 
+      // reCAPTCHA v3 token
+      const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
+      let recaptchaToken: string | null = null;
+      if (siteKey) {
+        try {
+          const { executeRecaptcha } = await import('@/lib/recaptcha');
+          recaptchaToken = await executeRecaptcha(siteKey, 'contact');
+        } catch (err) {
+          console.warn('reCAPTCHA load failed', err);
+        }
+      }
+
+      const bodyPayload = { ...payload, recaptchaToken };
+
       const response = await fetch(workerEndpoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(bodyPayload),
       });
 
       if (!response.ok) {
