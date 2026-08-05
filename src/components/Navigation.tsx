@@ -70,6 +70,7 @@ const Navigation = () => {
     { name: "Proyectos", href: "#proyectos" },
     { name: "Nosotros", href: "#nosotros" },
     { name: "Contacto", href: "#contacto" },
+    { name: "Quejas / Apelaciones", href: "#reclamos" },
   ];
 
   return (
