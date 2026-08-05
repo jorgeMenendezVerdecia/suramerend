@@ -1,4 +1,5 @@
 import { MapPin, Phone, Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -64,6 +65,11 @@ const Footer = () => {
                 <p>operaciones@suramerend.com</p>
               </div>
             </div>
+            <div className="mt-6">
+              <Button asChild size="sm" className="bg-orange-500 hover:bg-orange-600 text-white">
+                <a href="#reclamos" aria-label="Quejas / Apelaciones">Quejas / Apelaciones</a>
+              </Button>
+            </div>
           </div>
         </div>
 
@@ -78,9 +84,6 @@ const Footer = () => {
               </a>
               <a href="#" className="hover:text-primary-foreground transition-colors duration-normal">
                 Términos de Servicio
-              </a>
-              <a href="#reclamos" aria-label="Quejas / Apelaciones" className="hover:text-primary-foreground transition-colors duration-normal">
-                Quejas / Apelaciones
               </a>
               <a href="#" className="hover:text-primary-foreground transition-colors duration-normal">
                 Certificaciones
