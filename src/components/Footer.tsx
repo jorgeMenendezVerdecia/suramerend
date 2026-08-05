@@ -79,6 +79,9 @@ const Footer = () => {
               <a href="#" className="hover:text-primary-foreground transition-colors duration-normal">
                 Términos de Servicio
               </a>
+              <a href="#reclamos" aria-label="Quejas / Apelaciones" className="hover:text-primary-foreground transition-colors duration-normal">
+                Quejas / Apelaciones
+              </a>
               <a href="#" className="hover:text-primary-foreground transition-colors duration-normal">
                 Certificaciones
               </a>

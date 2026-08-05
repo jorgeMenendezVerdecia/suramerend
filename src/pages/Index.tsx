@@ -6,14 +6,12 @@ import TechnologiesSection from "@/components/TechnologiesSection";
 import AboutSection from "@/components/AboutSection";
 import ComplaintsSection from "@/components/ComplaintsSection";
 import ContactSection from "@/components/ContactSection";
-import FloatingComplaintButton from "@/components/FloatingComplaintButton";
 import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <FloatingComplaintButton />
       <HeroSection />
       <ServicesSection />
       <TechnologiesSection />
