@@ -136,13 +136,6 @@ const Navigation = () => {
                   {item.name}
                 </a>
               ))}
-              <a
-                href="#reclamos"
-                className="block px-3 py-2 text-foreground hover:text-primary transition-colors duration-normal"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Quejas / Apelaciones
-              </a>
               <div className="px-3 py-2">
                 <Button variant="cta" size="sm" className="w-full" asChild>
                   <a href="#contacto" onClick={() => setIsMenuOpen(false)}>
