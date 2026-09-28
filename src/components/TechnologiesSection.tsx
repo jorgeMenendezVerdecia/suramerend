@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle, Award, Shield, Zap } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { CheckCircle, Award, Shield, Zap, FileText } from "lucide-react";
 
 const TechnologiesSection = () => {
   const technologies = [
@@ -79,6 +80,20 @@ const TechnologiesSection = () => {
                 {cert}
               </Badge>
             ))}
+          </div>
+
+          <div className="mt-8 text-center">
+            <Button asChild size="lg" variant="professional">
+              <a
+                href="/SAE-ACR-0325-2026.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Ver Certificado de Acreditación SAE (PDF)"
+              >
+                <FileText className="w-4 h-4 mr-2" />
+                Certificado de Acreditación SAE
+              </a>
+            </Button>
           </div>
         </div>
       </div>

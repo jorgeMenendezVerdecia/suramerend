@@ -27,10 +27,19 @@ Sitio web corporativo de Suramerend construido con React, Vite y Cloudflare Page
 - `src/pages/NotFound.tsx` — ruta catch-all
 - `src/components/ContactSection.tsx` — formulario de cotizaciones
 - `src/components/ComplaintsSection.tsx` — formulario de quejas/apelaciones
+- `src/components/TechnologiesSection.tsx` — sección de tecnologías y certificaciones
 - `functions/api/email-send.ts` — endpoint de envío de emails
 - `functions/_middleware.ts` — middleware de mantenimiento
 - `wrangler.toml` — configuración de Cloudflare Pages
 - `public/maintenance.html` — página de mantenimiento
+- `public/SAE-ACR-0325-2026.pdf` — certificado de acreditación SAE (descargable)
+
+## Certificado de acreditación (PDF)
+
+El certificado de acreditación se sirve como activo estático desde `public/`, por lo que
+queda disponible en `https://www.suramerend.com/SAE-ACR-0325-2026.pdf`. Para reemplazarlo
+basta con sustituir el archivo en `public/` (manteniendo el nombre o actualizando el enlace
+en `src/components/TechnologiesSection.tsx`).
 
 ## Configuración local
 
@@ -122,6 +131,25 @@ npx wrangler pages secret put MAINTENANCE_MODE --project-name suramerend-www
 - Mantener los secretos fuera del repositorio.
 - Verificar `RESEND_API_KEY` antes de desplegar envíos de correo.
 - Controlar la regla de rate limiting para `POST /api/email-send` en Cloudflare.
+
+## Versionado
+
+El proyecto sigue [Versionado Semántico](https://semver.org/lang/es/) (`X.Y.Z`):
+
+- `X` (major): cambios incompatibles con versiones anteriores.
+- `Y` (minor): nuevas funcionalidades compatibles.
+- `Z` (patch): correcciones de errores.
+
+El historial de cambios se registra en [`CHANGELOG.md`](./CHANGELOG.md). Cada release se
+etiqueta en git con el prefijo `v` (por ejemplo `v1.0.0`) y se sincroniza con el campo
+`version` de `package.json`.
+
+Para publicar una nueva versión:
+
+```bash
+npm version <major|minor|patch>   # actualiza package.json y crea el tag git
+git push origin main --tags
+```
 
 ## Contacto para desarrolladores
 

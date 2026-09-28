@@ -100,3 +100,28 @@ npx wrangler login
 | `src/components/ComplaintsSection.tsx` | Formulario de quejas/apelaciones             |
 | `src/assets/quejas-bpmn.webp`          | Diagrama BPMN del proceso de quejas          |
 | `src/assets/apelaciones-bpmn.webp`     | Diagrama BPMN del proceso de apelaciones     |
+| `public/SAE-ACR-0325-2026.pdf`         | Certificado de acreditación SAE (descargable) |
+
+---
+
+## Versionado y releases
+
+El proyecto usa [Versionado Semántico](https://semver.org/lang/es/) (`X.Y.Z`), sincronizado
+entre `package.json`, el tag de git (`vX.Y.Z`) y [`CHANGELOG.md`](./CHANGELOG.md).
+
+Flujo de release recomendado:
+
+```bash
+# 1. Bump de versión (actualiza package.json y crea el tag)
+npm version patch   # o minor / major
+
+# 2. Publicar código y tags
+git push origin main --tags
+
+# 3. Build y deploy a producción
+npm run build && npx wrangler pages deploy dist --commit-dirty=true
+```
+
+> Nota: desde la v1.0.0 el conflicto de peers entre `vite@8` y
+> `@vitejs/plugin-react-swc` está resuelto (plugin `^4.3.3`); ya **no** es necesario
+> instalar con `--legacy-peer-deps`.
