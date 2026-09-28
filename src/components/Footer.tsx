@@ -85,7 +85,7 @@ const Footer = () => {
               <a href="#" className="hover:text-primary-foreground transition-colors duration-normal">
                 Términos de Servicio
               </a>
-              <a href="#" className="hover:text-primary-foreground transition-colors duration-normal">
+              <a href="#tecnologias" className="hover:text-primary-foreground transition-colors duration-normal">
                 Certificaciones
               </a>
             </div>
