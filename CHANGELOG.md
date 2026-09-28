@@ -5,6 +5,14 @@ Todos los cambios notables de este proyecto se documentan en este archivo.
 El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/)
 y el proyecto adhiere a [Versionado Semántico](https://semver.org/lang/es/) (X.Y.Z).
 
+## [1.0.2] - 2026-09-28
+
+### Corregido
+- Validado el ajuste en `src/components/TechnologiesSection.tsx`: se mantienen los enlaces
+  públicos a los certificados y la sección de certificaciones compila correctamente en build.
+- Actualizada la versión del proyecto a `1.0.2` para dejar reflejado el cambio de
+  contenido validado y la entrega del PR correspondiente.
+
 ## [1.0.1] - 2026-09-28
 
 ### Corregido

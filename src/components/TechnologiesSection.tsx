@@ -8,7 +8,7 @@ const TechnologiesSection = () => {
     {
       title: "Certificaciones Internacionales",
       description: "Mantenemos un sistema integrado para la calidad que cumple con:",
-      features: ["ISO 9001:2015 (sistema de gestión de calidad)", "ISO 17020:2012 (requisitos para organismos de inspección)"],
+      features: ["ISO 9001:2015 (Sistema de gestión de calidad)", "ISO 17020:2012 (Requisitos para organismos de inspección)"],
       icon: Award,
     },
     {
@@ -17,13 +17,6 @@ const TechnologiesSection = () => {
       features: ["ISO", "API", "ASTM", "ASME", "STANDARD DS-1 TH-Hill", "AWS", "IADCC", "SAE", "entre otros"],
       icon: Shield,
     },
-  ];
-
-  const certifications = [
-    "API - American Petroleum Institute",
-    "AWS - American Welding Society",
-    "ASNT - American Society for Nondestructive Testing",
-    "ASME - American Society of Mechanical Engineers",
   ];
 
   return (
@@ -68,20 +61,34 @@ const TechnologiesSection = () => {
         {/* Certifications */}
         <div className="bg-muted/30 rounded-lg p-8">
           <h3 className="text-2xl font-bold text-center text-foreground mb-8">
-            Certificaciones y Acreditaciones
+            Cumplimiento Normativo
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 justify-items-center">
-            {certifications.map((cert, index) => (
-              <Badge
-                key={index}
-                variant="secondary"
-                className="p-3 text-center justify-center text-sm bg-secondary/50 hover:bg-secondary transition-colors duration-normal"
+          <div className="mt-8 text-center">
+            <Button asChild size="lg" variant="professional">
+              <a
+                href="/ARCH-DTRNC-2026-SURAMEREND.SA.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Ver Autorización ARCH (PDF)"
               >
-                {cert}
-              </Badge>
-            ))}
+                <FileText className="w-4 h-4 mr-2" />
+                Autorización ARCH
+              </a>
+            </Button>
           </div>
-
+          <div className="mt-8 text-center">
+            <Button asChild size="lg" variant="professional">
+              <a
+                href="/EMA-SUR-25UI3509.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Ver Certificado de Acreditación EMA (PDF)"
+              >
+                <FileText className="w-4 h-4 mr-2" />
+                Certificado de acreditación EMA
+              </a>
+            </Button>
+          </div>
           <div className="mt-8 text-center">
             <Button asChild size="lg" variant="professional">
               <a
