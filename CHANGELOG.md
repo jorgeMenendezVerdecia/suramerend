@@ -5,6 +5,13 @@ Todos los cambios notables de este proyecto se documentan en este archivo.
 El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/)
 y el proyecto adhiere a [Versionado Semántico](https://semver.org/lang/es/) (X.Y.Z).
 
+## [1.0.1] - 2026-09-28
+
+### Corregido
+- `package-lock.json` regenerado con npm 10 para marcar los paquetes opcionales de
+  plataforma como `optional` en lugar de `extraneous`, evitando el error `EBADPLATFORM`
+  en `npm ci` del build de integración git de Cloudflare Pages.
+
 ## [1.0.0] - 2026-09-28
 
 ### Añadido
